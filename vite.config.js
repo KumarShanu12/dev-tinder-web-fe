@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    daisyui // Use the imported daisyui here
+    
   ],
   server: {
     hot: true, // Ensure HMR is enabled

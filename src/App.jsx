@@ -9,7 +9,7 @@ import Feed from "./components/Feed";
 import appStore from "./utils/appStore";
 import { Provider } from "react-redux";
 import Profile from "./components/Profile";
-import Connections from "./components/connections";
+import Connections from "./components/Connections";
 import Request from "./components/Request";
 
 function App() {

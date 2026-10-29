@@ -10,4 +10,7 @@ export default defineConfig({
     tailwindcss(),
     daisyui // Use the imported daisyui here
   ],
+  server: {
+    hot: true, // Ensure HMR is enabled
+},
 })

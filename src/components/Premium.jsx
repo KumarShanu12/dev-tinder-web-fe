@@ -6,6 +6,8 @@ const Premium = () => {
 
     const paymentHandler = async (type) =>{
 
+        console.log(type)
+
 
         try {
             const order = await axios.post(BASE_URL+'/payment/create',{
@@ -13,6 +15,8 @@ const Premium = () => {
             },{
                 withCredentials:true
             })
+
+            
 
             const {notes,keyId,currency,orderId,amount} = order.data
 
@@ -39,10 +43,7 @@ const Premium = () => {
             rzp.open();
 
         } catch (error) {
-            res.status(500).send({messgae:
-                'OOPS',
-                data:error.messgae
-            })
+             console.log(error)
         }
 
     }

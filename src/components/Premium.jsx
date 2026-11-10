@@ -1,0 +1,83 @@
+import axios from "axios";
+import React from "react";
+import BASE_URL from "../utils/constant";
+
+const Premium = () => {
+
+    const paymentHandler = async (type) =>{
+
+
+        try {
+            const order = await axios.post(BASE_URL+'/payment/create',{
+                memberShipType:type
+            },{
+                withCredentials:true
+            })
+
+            const {notes,keyId,currency,orderId,amount} = order.data
+
+
+            const options = {
+                key: keyId, // Replace with your Razorpay key_id
+                amount: amount, // Amount is in currency subunits.
+                currency: currency,
+                name: 'Road Laundry Side Payment',
+                description: 'Test Transaction',
+                order_id: orderId, // This is the order_id created in the backend
+                callback_url: 'http://localhost:3000/payment-success', // Your success URL
+                prefill: {
+                  name: notes.firstName+" " + notes.lastName,
+                  email: notes.emailId,
+                //   contact: notes.phone,
+                },
+                theme: {
+                  color: '#F37254'
+                },
+              };
+
+            const rzp = new window.Razorpay(options);
+            rzp.open();
+
+        } catch (error) {
+            res.status(500).send({messgae:
+                'OOPS',
+                data:error.messgae
+            })
+        }
+
+    }
+
+  return (
+    <div className="flex gap-2 justify-center mt-6">
+    <div className="card border-2 bg-secondary text-primary-content w-f">
+    <div className="card-body">
+      <h2 className="card-title">Plan 1</h2>
+      <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+      <div className="card-actions justify-end">
+        <button className="btn" onClick={()=>paymentHandler('silver')
+
+
+        }>Silver</button>
+      </div>
+    </div>
+  </div>
+  <div className="card bg-primary border-2 text-primary-content w-f">
+  <div className="card-body">
+    <h2 className="card-title">Plan 2</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div className="card-actions justify-end">
+      <button className="btn" onClick={()=>paymentHandler('gold')
+
+
+}   > Gold</button>
+    </div>
+  </div>
+</div>
+  </div>
+
+      
+    // </div>
+  );
+};
+
+export default Premium;

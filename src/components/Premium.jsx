@@ -43,7 +43,7 @@ const Premium = () => {
                 name: 'Road Laundry Side Payment',
                 description: 'Test Transaction',
                 order_id: orderId, // This is the order_id created in the backend
-                callback_url: 'http://localhost:3000/payment-success', // Your success URL
+                // callback_url: 'http://localhost:3000/payment-success', // Your success URL
                 prefill: {
                   name: notes.firstName+" " + notes.lastName,
                   email: notes.emailId,

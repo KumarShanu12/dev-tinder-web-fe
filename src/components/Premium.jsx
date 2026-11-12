@@ -6,7 +6,7 @@ const Premium = () => {
   const [premium, setPremium] = useState(false);
 
   React.useEffect(() => {
-    verifyPremiumUser();
+    ()=>verifyPremiumUser();
   }, []);
 
   const verifyPremiumUser = async () => {
@@ -61,7 +61,7 @@ const Premium = () => {
   };
   return (
     <>
-      {premium ? (
+      {!premium ? (
         <div className="flex gap-2 justify-center mt-6">
           <div className="card border-2 bg-secondary text-primary-content w-f">
             <div className="card-body">

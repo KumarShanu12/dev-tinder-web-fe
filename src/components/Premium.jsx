@@ -6,7 +6,7 @@ const Premium = () => {
   const [premium, setPremium] = useState(false);
 
   React.useEffect(() => {
-    ()=>verifyPremiumUser();
+    verifyPremiumUser();
   }, []);
 
   const verifyPremiumUser = async () => {
